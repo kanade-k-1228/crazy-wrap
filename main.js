@@ -4,41 +4,49 @@ const playButton = document.getElementById("play");
 const tweetButton = document.getElementById("tweet");
 const output = document.getElementById("output");
 
-let generated;
-
 const items = [
-  ["狂う❗", ""],
-  ["狂う❗", ""],
-  ["クレラップ", ""],
-  ["狂う❗", ""],
-  ["狂う❗", ""],
-  ["狂う❗", ""],
-  ["狂う❗", ""],
-  ["狂う❗", ""],
-  ["狂う❗", ""],
-  ["狂う狂う狂う狂う❗", ""],
-  ["クレラップ", ""],
-  ["クレラップ", ""],
+  ["狂う❗", "./sound/kuruu1.mp3"],
+  ["狂う❗", "./sound/kuruu2.mp3"],
+  ["クレラップ", "./sound/kurewrap.mp3"],
+  ["狂う❗", "./sound/kuruu3.mp3"],
+  ["狂う❗", "./sound/kuruu4.mp3"],
+  ["狂う❗", "./sound/kuruu5.mp3"],
+  ["狂う❗", "./sound/kuruu6.mp3"],
+  ["狂う❗", "./sound/kuruu7.mp3"],
+  ["狂う❗", "./sound/kuruu8.mp3"],
+  ["狂う狂う狂う狂う❗", "./sound/kurukurukurukuru.mp3"],
+  ["クレラップ", "./sound/kurewrap2.mp3"],
+  ["クレラップ", "./sound/kurewrap3.mp3"],
 ];
 
 const normalGen = () => {
-  generated =
-    "狂う❗狂う❗クレラップ狂う❗狂う❗狂う❗狂う❗狂う❗狂う❗狂う狂う狂う狂う❗クレラップクレラップ";
+  return "狂う❗狂う❗クレラップ狂う❗狂う❗狂う❗狂う❗狂う❗狂う❗狂う狂う狂う狂う❗クレラップクレラップ";
 };
 
 const randomGen = () => {
-  generated =
-    "狂う❗狂う❗クレラップ狂う❗狂う❗狂う❗狂う❗狂う❗狂う❗狂う狂う狂う狂う❗クレラップクレラップ";
+  return "狂う❗狂う❗クレラップ狂う❗狂う❗狂う❗狂う❗狂う❗狂う❗狂う狂う狂う狂う❗クレラップクレラップ";
 };
 
-const tweet = () => {};
+const tweet = (text) => {
+  window.open(
+    "https://twitter.com/intent/tweet?via=kanade_k_1228&related=kanade_k_1228&url=" +
+      location.href +
+      "&text=" +
+      text,
+    "_blank"
+  );
+};
 
 normalGenButton.onclick = () => {
-  normalGen();
-  output.innerText = generated;
+  const gen = normalGen();
+  output.innerText = gen;
 };
 
 randomGenButton.onclick = () => {
-  randomGen();
-  output.innerText = generated;
+  const gen = randomGen();
+  output.innerText = gen;
+};
+
+tweetButton.onclick = () => {
+  tweet(output.innerText);
 };
