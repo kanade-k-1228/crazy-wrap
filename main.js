@@ -19,12 +19,20 @@ const items = [
   ["クレラップ", "./sound/kurewrap3.mp3"],
 ];
 
+const shuffle = ([...array]) => {
+  for (let i = array.length - 1; i >= 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
 const normalGen = () => {
   return "狂う❗狂う❗クレラップ狂う❗狂う❗狂う❗狂う❗狂う❗狂う❗狂う狂う狂う狂う❗クレラップクレラップ";
 };
 
 const randomGen = () => {
-  return "狂う❗狂う❗クレラップ狂う❗狂う❗狂う❗狂う❗狂う❗狂う❗狂う狂う狂う狂う❗クレラップクレラップ";
+  return shuffle(items).reduce((acm, [text, _]) => acm + text, "");
 };
 
 const tweet = (text) => {
